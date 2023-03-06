@@ -1,0 +1,27 @@
+<%- include('./includes/header.ejs')%>
+
+<%- include('./includes/nav.ejs')%>
+
+<div class="container">
+    
+    
+  
+
+        <div class="row">
+            <%for(cat of cats){%>
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= cat.image%>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"> <a href="/cat/<%= cat._id%>"><%= cat.name%>  </a></h5>
+                    
+                   
+                    </div>
+                  </div>
+            <%}%>
+
+
+    </div>
+</div>
+
+
+<%- include('./includes/footer.ejs')%>
