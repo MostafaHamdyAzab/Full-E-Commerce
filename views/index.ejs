@@ -23,6 +23,7 @@
 
 
     <div class="row">
+        <%if(products.length !==0){%>
         <% for(let product of products){%>
             <div class="card" style="width: 18rem;">
             
@@ -39,7 +40,12 @@
                 </div>
               </div>
         <%}%>
-   
+        <%}else{%>
+            <div class="alert alert-danger">
+                <h3>No Produts Found</h3>
+            </div>
+           
+            <%}%>
 
         </div>
     </div>

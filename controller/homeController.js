@@ -8,7 +8,6 @@ exports.getAllProducts=(async(req,res,nxt)=>{
     if(!filter||filter =='all'){
        
         const products=await productsModel.find({});
-        console.log(products)
         if(cats&&products){
             res.render('../views/index.ejs',{products:products,cats:cats});
         }else{
@@ -34,7 +33,7 @@ exports.addProduct=((req,res,nxt)=>{
         name:"test1",
         price:22,
         image:"1.jpg",
-        cat:"test1",
+        cat:"clothes",
         desc:"The First Product"
     });
     res.render('../views/index.ejs');

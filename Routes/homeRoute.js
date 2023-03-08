@@ -1,6 +1,7 @@
-const router=require('express').Router();
+const Router=require('express').Router();
 const homeController=require('../controller/homeController');
 
-router.get('/',homeController.getAllProducts);
+Router.get('/',homeController.getAllProducts);
+// Router.get('/',homeController.addProduct);
 
-module.exports=router
+module.exports=Router;

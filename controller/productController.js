@@ -9,4 +9,5 @@ exports.getProduct=((req,res,nxt)=>{
     .catch((err)=>{
         console.log(err);
     })
-})
+});
+
