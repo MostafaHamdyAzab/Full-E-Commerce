@@ -9,9 +9,17 @@ const userSchema=new Schema({
         type:String,
         min:3
     },
+    userName:{
+        type:String,
+        required:true,
+        min:3,
+        unique:[true,"User NNmame Already Exists"]
+    },
     email:{
         type:String,
         required:true,
+        pattern:['[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$',"You must use valid email pattern"],
+        unique:[true,"This Email is Tokem"]
     
     },
     password:{
