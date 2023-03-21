@@ -28,7 +28,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Orders</a>
         </li>
-
+        <% if(!isAuthenticated){ %> 
         <li class="nav-item">
           <a class="nav-link" href="/auth/login">Login</a>
         </li>
@@ -40,10 +40,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Manage</a>
         </li>
+        <%}%>
+       
                                 
       </ul>
-
-       
+      <% if(isAuthenticated){ %> 
+      <form action="/auth/logout" method="POST">
+       <input type="submit" value="Logout" class="btn btn-danger">
+      </form> 
+   <%}%>
     </div>
 
 </div>

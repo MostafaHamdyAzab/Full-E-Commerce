@@ -4,6 +4,7 @@ const catsModel=require('../models/catsModel');
 
 exports.getAllProducts=(async(req,res,nxt)=>{
     const cats=await catsModel.find({});
+    req.flash('cats',cats);
     const filter=req.query.cat;
     if(!filter||filter =='all'){
        
