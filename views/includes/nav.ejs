@@ -21,13 +21,7 @@
           <a class="nav-link" href="/cats">Cats</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Orders</a>
-        </li>
+       
         <% if(!isAuthenticated){ %> 
         <li class="nav-item">
           <a class="nav-link" href="/auth/login">Login</a>
@@ -37,18 +31,32 @@
           <a class="nav-link" href="/auth/signup">SignUp</a>
         </li>
 
+      
+        <%}%>
+       
+
+        <% if(isAuthenticated){ %> 
+          <!-- User Already login -->
+     
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" href="#">Orders</a>
+        </li>
+  
         <li class="nav-item">
           <a class="nav-link" href="#">Manage</a>
         </li>
-        <%}%>
-       
-                                
+    
       </ul>
-      <% if(isAuthenticated){ %> 
-      <form action="/auth/logout" method="POST">
-       <input type="submit" value="Logout" class="btn btn-danger">
-      </form> 
-   <%}%>
+      <form method="POST" action="/auth/logout">
+   
+        <input type="submit" value="Logout" class="btn btn-danger">
+       </form> 
+       <%}%>
+                                
     </div>
 
 </div>

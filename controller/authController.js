@@ -19,7 +19,9 @@ exports.postSignUp=((req,res,nxt)=>{
                 bcrypt.hash(req.body.password,10).then((hashedPass)=>{
                         const newUser=new userModel({firstName:req.body.firstName,lastName:req.body.lastName,email:req.body.email,userName:req.body.userName,password:hashedPass});
                         newUser.save().then((data)=>{
-                            res.status(200).render('../views/login',{errors:errors});
+                            res.status(200).render('../views/login',{errors:errors,
+                                // csrfToken:req.csrfToken()
+                            });
                         })
                         .catch((err)=>{
                             res.send(err,"Error in Bcrypt");
@@ -48,21 +50,18 @@ exports.postLogin=( (req,res,nxt)=>{
            if(!user){
             errors="Sorry Email Not Found";
             req.flash('emailErr',"Sorry Email Not Found");
-            // console.log(req.flash('emailErr'));
             res.render('../views/login.ejs',{errors:req.flash('emailErr')}); 
            }else{
             bcrypt.compare(req.body.password,user.password)
             .then((matched)=>{
                 if(matched){
-                    console.log(user._id);
                     req.session.user=user;
                     req.session.isLoggedIn=true;
+                    res.locals.isAuthenticated = req.session.isLoggedIn;
+               
                     return req.session.save(err=>{
-               
-                        res.redirect('/');
+                       res.redirect('/userHome');
                     })
-                    // res.render('../views/home.ejs',{errors:errors});
-               
                 }else{
                    errors="Sorry, Password Not Correct";
                    req.flash('passwordErr',"Sorry, Password Not Correct");
@@ -78,6 +77,7 @@ exports.postLogin=( (req,res,nxt)=>{
 });
 
 exports.logout=((req,res,nxt)=>{
+    req.session.isLoggedIn=false;
     req.session.destroy(()=>{
         req.isAuth=false;
        res.redirect('/');

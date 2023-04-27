@@ -1,8 +1,22 @@
 
 //this for sitting privilages for users
-module.exports=((req,res,nxt)=>{
+exports.isAuth=((req,res,nxt)=>{
 if(!req.session.isLoggedIn){
-    res.redirect('/');
+    res.redirect('/auth/login');
+   
+}else{
+    nxt();
 }
-nxt();
+
 });
+
+
+exports.notAuth=((req,res,nxt)=>{
+    if(req.session.isLoggedIn){
+        res.redirect('/userHome');
+       
+    }else{
+        nxt();
+    }
+    
+    });

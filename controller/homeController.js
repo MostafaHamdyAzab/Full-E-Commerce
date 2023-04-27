@@ -12,7 +12,7 @@ exports.getAllProducts=(async(req,res,nxt)=>{
         if(cats&&products){
             res.render('../views/index.ejs',{products:products,cats:cats});
         }else{
-            res.status(404).json("Sorry An get an error since cats Or Products ");
+            res.status(404).json("Sorry get an error since cats Or Products ");
         }
       
     }else{
