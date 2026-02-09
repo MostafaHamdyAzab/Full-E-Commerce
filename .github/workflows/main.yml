@@ -1,0 +1,14 @@
+name: myWorkflow
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  firstJob:
+   runs-on: ubuntu-latest
+   steps:
+   - name: firstStep
+     run: echo"Welcome to the first Action"
+   
+     
+   
